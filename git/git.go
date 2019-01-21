@@ -60,7 +60,7 @@ func Info() (commit, branch, tag string, err error) {
 	}
 	tag, err = sh.Output("git", "describe", "--abbrev=0", "--tags")
 	if err != nil {
-		return
+		err = nil // ignore error
 	}
 	return
 }
