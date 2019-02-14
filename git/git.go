@@ -65,6 +65,16 @@ func Info() (commit, branch, tag string, err error) {
 	return
 }
 
+// Add adds files to the git index.
+func Add(files ...string) error {
+	return sh.RunCmd("git", "add")(files...)
+}
+
+// Commit creates a signed commit with the given message.
+func Commit(message string) error {
+	return sh.Run("git", "commit", "-S", "-m", message)
+}
+
 // Tag creates an signed, annotated tag with the given message.
 func Tag(tag, message string) error {
 	return sh.Run("git", "tag", "-s", "-a", tag, "-m", message)
