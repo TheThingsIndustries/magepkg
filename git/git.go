@@ -64,3 +64,8 @@ func Info() (commit, branch, tag string, err error) {
 	}
 	return
 }
+
+// Tag creates an annotated tag with the given message.
+func Tag(tag, message string) error {
+	return sh.Run("git", "tag", "-a", tag, "-m", message)
+}
